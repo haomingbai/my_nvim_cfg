@@ -62,6 +62,11 @@ require("lazy").setup({
     -- Hints
     {
       'lvimuser/lsp-inlayhints.nvim',
+    },
+
+    -- Treesitter alternative
+    {
+      'nvim-treesitter/nvim-treesitter',
     }
 
   },

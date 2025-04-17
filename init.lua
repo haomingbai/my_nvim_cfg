@@ -32,3 +32,6 @@ require('plugins.code_runner')
 
 -- 状态栏
 require('plugins.bar')
+
+-- 
+require('plugins/nvim-treesitter')

@@ -3,11 +3,11 @@ local lspconfig = require('lspconfig')
 local lsp = vim.lsp
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- 使用 LuaSnip 扩展代码片段
-    end,
-  },
+--   snippet = {
+--     expand = function(args)
+--       require('luasnip').lsp_expand(args.body) -- 使用 LuaSnip 扩展代码片段
+--     end,
+--   },
   mapping = {
     -- Tab: 切换补全条目或插入 Tab
     ['<Tab>'] = cmp.mapping(function(fallback)
@@ -195,6 +195,6 @@ vim.o.updatetime = 300
 -- })
 
 -- 智能暗示
-require("lsp-inlayhints").setup()
+-- require("lsp-inlayhints").setup()
 
-lsp.inlay_hint.enable()
+-- lsp.inlay_hint.enable()
