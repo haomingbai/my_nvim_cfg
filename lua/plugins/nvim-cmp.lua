@@ -2,12 +2,18 @@ local cmp = require 'cmp'
 local lspconfig = require('lspconfig')
 local lsp = vim.lsp
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+
+capabilities.textDocument.completion.completionItem.snippetSupport = false
+
 cmp.setup({
---   snippet = {
---     expand = function(args)
---       require('luasnip').lsp_expand(args.body) -- 使用 LuaSnip 扩展代码片段
---     end,
---   },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   mapping = {
     -- Tab: 切换补全条目或插入 Tab
     ['<Tab>'] = cmp.mapping(function(fallback)
@@ -67,10 +73,10 @@ cmp.setup({
     end, { 'i', 's' }),                -- i 代表插入模式，s 代表选择模式
   },
   sources = {
-    { name = 'nvim_lsp' }, -- LSP 补全源
-    { name = 'buffer' },   -- 缓冲区补全源
-    { name = 'path' },     -- 路径补全源
-    { name = 'luasnip' },  -- LuaSnip 补全源
+    { name = 'nvim_lsp' },    -- LSP 补全源
+    { name = 'buffer' },      -- 缓冲区补全源
+    { name = 'path' },        -- 路径补全源
+    { name = 'luasnip' },     -- LuaSnip 补全源
   },
 })
 
@@ -116,6 +122,8 @@ lspconfig.clangd.setup({
     "--fallback-style=google",      -- 设置代码风格
     "--header-insertion=iwyu",      -- 启用 "Include What You Use" (IWYU)
     "--inlay-hints",
+    "--completion-style=detailed",
+    "--function-arg-placeholders=0",
   },
   settings = {
     clangd = {
@@ -197,4 +205,4 @@ vim.o.updatetime = 300
 -- 智能暗示
 -- require("lsp-inlayhints").setup()
 
--- lsp.inlay_hint.enable()
+lsp.inlay_hint.enable()

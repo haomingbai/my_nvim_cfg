@@ -45,7 +45,13 @@ require("lazy").setup({
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
-    { 'saadparwaiz1/cmp_luasnip' },
+    {
+      "L3MON4D3/LuaSnip",
+      -- follow latest release.
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      -- install jsregexp (optional!).
+      build = "make install_jsregexp"
+    },
     -- Mason补全服务器管理器
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
@@ -64,10 +70,10 @@ require("lazy").setup({
       'lvimuser/lsp-inlayhints.nvim',
     },
 
-    -- Treesitter alternative
-    {
-      'nvim-treesitter/nvim-treesitter',
-    }
+    --     -- Treesitter alternative
+    --     {
+    --       'nvim-treesitter/nvim-treesitter',
+    --     }
 
   },
   -- Configure any other settings here. See the documentation for more details.
