@@ -73,14 +73,12 @@ cmp.setup({
     end, { 'i', 's' }),                -- i 代表插入模式，s 代表选择模式
   },
   sources = {
-    { name = 'nvim_lsp' },    -- LSP 补全源
-    { name = 'buffer' },      -- 缓冲区补全源
-    { name = 'path' },        -- 路径补全源
-    { name = 'luasnip' },     -- LuaSnip 补全源
+    { name = 'nvim_lsp' }, -- LSP 补全源
+    { name = 'buffer' },   -- 缓冲区补全源
+    { name = 'path' },     -- 路径补全源
+    { name = 'luasnip' },  -- LuaSnip 补全源
   },
 })
-
-vim.lsp.inlay_hint.enable(true) -- 启用 inlay hints
 
 -- 配置 LSP 服务器
 local on_attach = function(client, bufnr)
@@ -121,7 +119,7 @@ lspconfig.clangd.setup({
     "--clang-tidy",                 -- 启用 clang-tidy
     "--fallback-style=google",      -- 设置代码风格
     "--header-insertion=iwyu",      -- 启用 "Include What You Use" (IWYU)
-    "--inlay-hints",
+    "--inlay-hints=true",
     "--completion-style=detailed",
     "--function-arg-placeholders=0",
   },
@@ -138,6 +136,10 @@ lspconfig.clangd.setup({
       }
     },
   },
+})
+
+lspconfig.asm_lsp.setup({
+  on_attach = on_attach, -- 使用相同的 on_attach 配置
 })
 
 lspconfig.pyright.setup({
@@ -203,6 +205,5 @@ vim.o.updatetime = 300
 -- })
 
 -- 智能暗示
--- require("lsp-inlayhints").setup()
-
+vim.lsp.inlay_hint.enable(true) -- 启用 inlay hints
 lsp.inlay_hint.enable()
