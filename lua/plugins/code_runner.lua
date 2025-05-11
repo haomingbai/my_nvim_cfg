@@ -17,7 +17,7 @@ require('code_runner').setup({
     c = function(...)
       c_base = {
         "cd $dir &&",
-        "gcc $fileName -o",
+        "cc $fileName -o",
         "/tmp/$fileNameWithoutExt",
         "-Wall",
       }
@@ -35,7 +35,7 @@ require('code_runner').setup({
     cpp = function(...)
       cpp_base = {
         "cd $dir &&",
-        "g++ -std=c++23 $fileName -o",
+        "c++ -std=c++23 $fileName -o",
         "/tmp/$fileNameWithoutExt",
         "-Wall",
       }
