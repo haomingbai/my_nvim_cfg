@@ -35,7 +35,7 @@ require('code_runner').setup({
     cpp = function(...)
       cpp_base = {
         "cd $dir &&",
-        "c++ -std=c++23 $fileName -o",
+        "c++ -std=c++23 -fmodules -fsearch-include-path $fileName -o",
         "/tmp/$fileNameWithoutExt",
         "-Wall",
       }

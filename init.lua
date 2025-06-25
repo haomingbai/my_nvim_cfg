@@ -35,3 +35,6 @@ require('plugins.bar')
 
 -- 
 require('plugins/nvim-treesitter')
+
+-- 文件开头附加版权信息
+require('config.tpl')
