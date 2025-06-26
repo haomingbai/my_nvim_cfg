@@ -138,6 +138,10 @@ lspconfig.clangd.setup({
   },
 })
 
+lspconfig.rust_analyzer.setup({
+  on_attach = on_attach,
+})
+
 lspconfig.asm_lsp.setup({
   on_attach = on_attach, -- 使用相同的 on_attach 配置
 })
