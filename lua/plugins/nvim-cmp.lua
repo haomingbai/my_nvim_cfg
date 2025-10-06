@@ -195,6 +195,8 @@ lspconfig.texlab.setup({
   -- filetypes = { "tex", "latex", "bib" }, -- 支持 LaTeX 和 BibTeX 文件
 })
 
+lspconfig.glsl_analyzer.setup({})
+
 vim.o.updatetime = 300
 
 -- -- 启用自动显示文档

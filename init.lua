@@ -18,6 +18,9 @@ vim.cmd [[
 vim.o.termguicolors = true -- 启用 true color 支持
 vim.cmd('colorscheme vim') -- 使用默认的颜色主题
 
+-- 编码问题
+vim.o.fileencoding="utf-8"
+
 -- 插件管理器: Lazy.nvim
 require("config.lazy")
 
