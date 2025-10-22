@@ -1,10 +1,7 @@
-local cmp = require 'cmp'
-local lspconfig = require('lspconfig')
+local cmp = require('cmp')
 local lsp = vim.lsp
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 
@@ -80,6 +77,7 @@ cmp.setup({
   },
 })
 
+
 -- 配置 LSP 服务器
 local on_attach = function(client, bufnr)
   -- 使用 LSP 功能
@@ -111,11 +109,10 @@ local on_attach = function(client, bufnr)
 end
 
 -- 配置 C++、Python 和 Lua 的 LSP
-lspconfig.clangd.setup({
+lsp.config('clangd', {
   on_attach = on_attach, -- C++ LSP
   cmd = {
     "clangd",
-    "--compile-commands-dir=build", -- 设置编译命令目录（如果有）
     "--clang-tidy",                 -- 启用 clang-tidy
     "--fallback-style=google",      -- 设置代码风格
     "--header-insertion=iwyu",      -- 启用 "Include What You Use" (IWYU)
@@ -138,19 +135,19 @@ lspconfig.clangd.setup({
   },
 })
 
-lspconfig.rust_analyzer.setup({
+lsp.config('rust_analyzer', {
   on_attach = on_attach,
 })
 
-lspconfig.asm_lsp.setup({
+lsp.config('asm_lsp', {
   on_attach = on_attach, -- 使用相同的 on_attach 配置
 })
 
-lspconfig.pyright.setup({
+lsp.config('pyright', {
   on_attach = on_attach, -- Python LSP
 })
 
-lspconfig.lua_ls.setup({
+lsp.config('lua_ls', {
   on_attach = on_attach, -- Lua LSP
   settings = {
     Lua = {
@@ -170,14 +167,14 @@ lspconfig.lua_ls.setup({
   },
 })
 
-lspconfig.marksman.setup({
+lsp.config('marksman', {
   on_attach = on_attach,
   cmd = {
     "marksman", "server",
   }
 })
 
-lspconfig.texlab.setup({
+lsp.config('texlab', {
   on_attach = on_attach, -- 使用相同的 on_attach 配置
   settings = {
     texlab = {
@@ -195,7 +192,7 @@ lspconfig.texlab.setup({
   -- filetypes = { "tex", "latex", "bib" }, -- 支持 LaTeX 和 BibTeX 文件
 })
 
-lspconfig.glsl_analyzer.setup({})
+lsp.enable('glsl_analyzer')
 
 vim.o.updatetime = 300
 
