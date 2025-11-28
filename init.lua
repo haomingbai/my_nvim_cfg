@@ -6,6 +6,8 @@ vim.o.hlsearch = true      -- 高亮搜索结果
 vim.o.ignorecase = true    -- 搜索时忽略大小写
 vim.o.smartcase = true     -- 智能大小写搜索
 
+vim.o.fileencodings = "ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1"
+
 -- 设置自动缩进
 vim.o.tabstop = 2          -- 一个 tab 等于 4 个空格
 vim.o.shiftwidth = 2       -- 每次缩进的空格数
